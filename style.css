@@ -57,7 +57,10 @@ body {
 .container {
     max-width: 880px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    /* Account for iOS notch / home indicator */
+    padding: calc(48px + env(safe-area-inset-top)) 24px calc(80px + env(safe-area-inset-bottom));
+    padding-left: max(24px, env(safe-area-inset-left));
+    padding-right: max(24px, env(safe-area-inset-right));
 }
 
 /* Header */
@@ -735,7 +738,9 @@ body {
 
 @media (max-width: 720px) {
     .container {
-        padding: 32px 16px 64px;
+        padding: calc(32px + env(safe-area-inset-top)) 16px calc(64px + env(safe-area-inset-bottom));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
     }
 
     .header {
